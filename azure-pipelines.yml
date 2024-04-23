@@ -38,4 +38,4 @@ steps:
     awsCommand: 'aws'
     awsSubCommand: 's3 cp'
     arguments: '$(Pipeline.Workspace)/build s3://azuretestbucket123/ --recursive'
-
+    debug: true
