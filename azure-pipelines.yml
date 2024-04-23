@@ -39,3 +39,10 @@ steps:
     buildVersionToDownload: 'latest'
     downloadType: 'single'
     downloadPath: '$(System.ArtifactsDirectory)'
+- task: AWSCLI@1
+  inputs:
+    awsAccessKey: $(AWS_ACCESS_KEY_ID)
+    awsSecretKey: $(AWS_SECRET_ACCESS_KEY)
+    regionName: 'us-east-1'
+    command: 's3 cp'
+    arguments: 'source_path $(Pipeline.Workspace)/build s3://azuretestbucket123/ --recursive'
