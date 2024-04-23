@@ -35,10 +35,12 @@ steps:
   inputs:
     awsCredentials: 'aws-azure connection'
     regionName: 'us-east-1'
+    awsCommand: 's3'  # Specify the AWS CLI command
     bucketName: 'azuretestbucket123'
     sourceFolder: '$(Pipeline.Workspace)/build'
     globExpressions: '$(Pipeline.Workspace)/build/**'  # Use a glob expression to include all files recursively
     targetFolder: 's3://azuretestbucket123/'  # Corrected the targetFolder syntax
     recursive: true  # Use 'recursive' input to enable recursive copying
     debug: true
+
 
