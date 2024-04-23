@@ -31,18 +31,8 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'Test'
     publishLocation: 'pipeline'
-- task: DownloadBuildArtifacts@1
-  inputs:
-    buildType: 'specific'
-    project: '888da3e4-fa44-4d60-8de0-310cd8e4c7c1'
-    pipeline: '5'
-    buildVersionToDownload: 'latest'
-    downloadType: 'single'
-    downloadPath: '$(System.ArtifactsDirectory)'
 - task: AWSCLI@1
   inputs:
-    awsAccessKey: $(AWS_ACCESS_KEY_ID)
-    awsSecretKey: $(AWS_SECRET_ACCESS_KEY)
+    awsCredentials: 'aws-azure connection'
     regionName: 'us-east-1'
-    command: 's3 cp'
-    arguments: 'source_path $(Pipeline.Workspace)/build s3://azuretestbucket123/ --recursive'
+    awsCommand: 'aws s3 cp $(Pipeline.Workspace)/build s3://azuretestbucket123/ --recursive'
