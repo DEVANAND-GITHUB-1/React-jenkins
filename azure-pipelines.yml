@@ -31,3 +31,11 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'Test'
     publishLocation: 'pipeline'
+- task: DownloadBuildArtifacts@1
+  inputs:
+    buildType: 'specific'
+    project: '888da3e4-fa44-4d60-8de0-310cd8e4c7c1'
+    pipeline: '5'
+    buildVersionToDownload: 'latest'
+    downloadType: 'single'
+    downloadPath: '$(System.ArtifactsDirectory)'
