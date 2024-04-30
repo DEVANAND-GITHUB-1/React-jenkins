@@ -31,6 +31,14 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     artifact: 'Test'
     publishLocation: 'pipeline'
+- task: S3Upload@1
+  inputs:
+    awsCredentials: 'Azure-S3'
+    regionName: 'us-east-1'
+    bucketName: 'ram-azure123-test'
+    sourceFolder: '$(Pipeline.Workspace)'
+    globExpressions: 'Test**'
+    createBucket: true
 
 
 
