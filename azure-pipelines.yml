@@ -37,6 +37,6 @@ steps:
     regionName: 'us-east-1'
     bucketName: 'ram-azure123-test'
     sourceFolder: '$(Pipeline.Workspace)'
-    globExpressions: '**'
+    globExpressions: '/s/build**'
 
 
