@@ -39,4 +39,12 @@ steps:
     sourceFolder: '$(Pipeline.Workspace)/s/build'
     globExpressions: '**'
 
-
+- task: AWSShellScript@1
+  inputs:
+    awsCredentials: 'Azure-S3'
+    regionName: 'us-east-1'
+    scriptType: 'inline'
+    inlineScript: |
+      aws cloudfront create-invalidation \
+          --distribution-id E2F5CMHS1G1ECG \
+          --paths "/*"
